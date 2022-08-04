@@ -41,40 +41,38 @@ const RegisterComponent = ({
             label="Username"
             iconPosition="right"
             placeholder="Enter Username"
-            // error={errors.userName || error?.username?.[0]}
-            // onChangeText={(value) => {
-            //   onChange({name: 'userName', value});
-            // }}
+            error={errors.userName || error?.username?.[0]}
+            onChangeText={value => {
+              onChange({name: 'userName', value});
+            }}
           />
-
           <Input
             label="First name"
             iconPosition="right"
             placeholder="Enter First name"
-            // onChangeText={(value) => {
-            //   onChange({name: 'firstName', value});
-            // }}
-            // error={errors.firstName || error?.first_name?.[0]}
+            onChangeText={value => {
+              onChange({name: 'firstName', value});
+            }}
+            error={errors.firstName || error?.first_name?.[0]}
           />
           <Input
             label="Last Name"
             iconPosition="right"
             placeholder="Enter Last name"
-            //     error={errors.lastName || error?.last_name?.[0]}
-            //     onChangeText={(value) => {
-            //       onChange({name: 'lastName', value});
-            //     }}
+            error={errors.lastName || error?.last_name?.[0]}
+            onChangeText={value => {
+              onChange({name: 'lastName', value});
+            }}
           />
           <Input
             label="Email"
             iconPosition="right"
             placeholder="Enter Email"
-            // error={errors.email || error?.email?.[0]}
-            // onChangeText={value => {
-            //   onChange({name: 'email', value});
-            // }}
+            error={errors.email || error?.email?.[0]}
+            onChangeText={value => {
+              onChange({name: 'email', value});
+            }}
           />
-
           <Input
             label="Password"
             placeholder="Enter Password"
@@ -93,7 +91,6 @@ const RegisterComponent = ({
             //   onChange({name: 'password', value});
             // }}
           />
-
           <CustomButton
             loading={loading}
             onPress={onSubmit}
@@ -101,7 +98,6 @@ const RegisterComponent = ({
             primary
             title="Submit"
           />
-
           <View style={styles.createSection}>
             <Text style={styles.infoText}>Already have an account?</Text>
             <TouchableOpacity
