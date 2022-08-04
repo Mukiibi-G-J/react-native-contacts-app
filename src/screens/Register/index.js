@@ -2,8 +2,10 @@ import {View, Text} from 'react-native';
 import React, {useState} from 'react';
 import RegisterComponent from '../../components/register';
 import {useNavigation} from '@react-navigation/native';
+import envs from '../../Config/env';
 
 export default function Register() {
+  console.log('Backend_url>>', envs);
   const [form, setForm] = useState({});
   const {navigate} = useNavigation();
   const [errors, setErrors] = useState({});
