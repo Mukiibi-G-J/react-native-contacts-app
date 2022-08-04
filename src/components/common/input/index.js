@@ -59,6 +59,8 @@ export default function Input({
             setFocused(false);
           }}
           {...props}
+          tex
+          placeholderTextColor={colors.grey}
         />
       </View>
 

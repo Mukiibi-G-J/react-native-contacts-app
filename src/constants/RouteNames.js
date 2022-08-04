@@ -4,3 +4,5 @@ export const CREATE_CONTACT = 'Create contact';
 export const SETTINGS = 'Settings';
 export const LOGIN = 'Login';
 export const HOME_NAVIGATION = 'home';
+export const REGISTER = 'Register';
+export const HOME_NAVIGATOR = 'Home';
