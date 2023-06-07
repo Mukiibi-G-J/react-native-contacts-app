@@ -23,7 +23,7 @@ const CreateContacts = () => {
     </View>
   );
 };
-const settings = () => {
+const Settings = () => {
   return (
     <View>
       <Text>These are your settings</Text>
@@ -33,11 +33,11 @@ const settings = () => {
 const HomeNavigator = () => {
   const HomeStack = createNativeStackNavigator();
   return (
-    <HomeStack.Navigator initialRouteName={CONTACT_LIST}>
+    <HomeStack.Navigator initialRouteName={CONTACT_LIST}   >
       <HomeStack.Screen name={CONTACT_LIST} component={Contacts} />
       <HomeStack.Screen name={CONTACT_DETAIL} component={COntactDetail} />
       <HomeStack.Screen name={CREATE_CONTACT} component={CreateContacts} />
-      <HomeStack.Screen name={SETTINGS} component={settings} />
+      <HomeStack.Screen name={SETTINGS} component={Settings} />
     </HomeStack.Navigator>
   );
 };

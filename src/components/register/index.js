@@ -7,6 +7,7 @@ import {LOGIN} from '../../constants/RouteNames';
 import Container from '../common/Container';
 import CustomButton from '../common/CustomButton';
 import Input from '../common/input';
+import Message from '../common/messages';
 import {styles} from './style';
 
 const RegisterComponent = ({
@@ -18,7 +19,7 @@ const RegisterComponent = ({
   errors,
 }) => {
   const {navigate} = useNavigation();
-  //   const [isSecureEntry, setIsSecureEntry] = useState(true);
+  const [isSecureEntry, setIsSecureEntry] = useState(true);
 
   return (
     <Container>
@@ -34,9 +35,10 @@ const RegisterComponent = ({
         <Text style={styles.subTitle}>Create a free account</Text>
 
         <View style={styles.form}>
-          {/* {error?.error && (
+          {error?.error && (
             <Message retry danger retryFn={onSubmit} message={error?.error} />
-          )} */}
+          )}
+          {error?.error && <Text>{error.error}</Text>}
           <Input
             label="Username"
             iconPosition="right"
@@ -77,19 +79,21 @@ const RegisterComponent = ({
             label="Password"
             placeholder="Enter Password"
             secureTextEntry={true}
-            // icon={
-            //   <TouchableOpacity
-            //     onPress={() => {
-            //       setIsSecureEntry(prev => !prev);
-            //     }}>
-            //     <Text>{isSecureEntry ? 'Show' : 'Hide'}</Text>
-            //   </TouchableOpacity>
-            // }
-            // iconPosition="right"
-            // error={errors.password || error?.password?.[0]}
-            // onChangeText={value => {
-            //   onChange({name: 'password', value});
-            // }}
+            icon={
+              <TouchableOpacity
+                onPress={() => {
+                  setIsSecureEntry(prev => !prev);
+                }}>
+                <Text style={{color: 'black'}}>
+                  {isSecureEntry ? 'Show' : 'Hide'}
+                </Text>
+              </TouchableOpacity>
+            }
+            iconPosition="right"
+            error={errors.password || error?.password?.[0]}
+            onChangeText={value => {
+              onChange({name: 'password', value});
+            }}
           />
           <CustomButton
             loading={loading}

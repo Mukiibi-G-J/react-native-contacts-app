@@ -1,14 +1,39 @@
 import {View, Text} from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import RegisterComponent from '../../components/register';
-import {useNavigation} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import envs from '../../Config/env';
+import axios from '../../helpers/axios';
+import register, {clearAuthState} from '../../Context/actions/auth/register';
+import {GlobaleContext} from '../../Context/Provider';
+import {LOGIN} from '../../constants/RouteNames';
 
 export default function Register() {
-  console.log('Backend_url>>', envs);
+  const {
+    authDispatch,
+    authState: {error, loading, data},
+  } = useContext(GlobaleContext);
+
   const [form, setForm] = useState({});
   const {navigate} = useNavigation();
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    console.log(data);
+    if (data) {
+      navigate(LOGIN);
+    }
+  }, [data]);
+  useFocusEffect(
+    React.useCallback(() => {
+      return () => {
+        if (data || error) {
+          clearAuthState()(authDispatch);
+        }
+      };
+    }, [authDispatch, data, error]),
+  );
+
   const onChange = ({name, value}) => {
     setForm({...form, [name]: value});
     if (value !== '') {
@@ -35,7 +60,6 @@ export default function Register() {
   };
 
   const onSubmit = () => {
-    console.log('form', form);
     if (!form.userName) {
       setErrors(prev => {
         return {...prev, userName: 'Please add a username'};
@@ -61,6 +85,16 @@ export default function Register() {
         return {...prev, password: 'Please add a password'};
       });
     }
+    if (
+      Object.values(form).length === 5 &&
+      Object.values(form).every(item => item.trim().length > 0) &&
+      Object.values(errors).every(item => !item)
+    ) {
+      register(form)(authDispatch);
+      // (response => {
+      //   navigate(LOGIN, {data: response});
+      // });
+    }
   };
   return (
     <RegisterComponent
@@ -68,7 +102,8 @@ export default function Register() {
       onChange={onChange}
       form={form}
       errors={errors}
-      //   error={error}
+      error={error}
+      loading={loading}
     />
   );
 }
