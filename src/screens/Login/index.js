@@ -14,18 +14,12 @@ export const Login = () => {
   const {params} = useRoute();
 
   React.useEffect(() => {
-    () => {
-      const data = AsyncStorage.getItem('data');
-      if (data) {
-        console.log(data);
-      }
-    };
     if (params?.data) {
+      console.log(params?.data);
       setJustSignedUp(true);
       setForm({...form, userName: params.data.username});
     }
-  }, [form, params]);
-
+  }, [params?.data]);
   const {
     authDispatch,
     authState: {error, loading},

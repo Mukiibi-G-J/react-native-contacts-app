@@ -18,12 +18,13 @@ export default function Register() {
   const {navigate} = useNavigation();
   const [errors, setErrors] = useState({});
 
-  useEffect(() => {
-    console.log(data);
-    if (data) {
-      navigate(LOGIN);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data) {
+  //     () => {
+  //       navigate(LOGIN, {data});
+  //     };
+  //   }
+  // }, []);
   useFocusEffect(
     React.useCallback(() => {
       return () => {
@@ -90,7 +91,11 @@ export default function Register() {
       Object.values(form).every(item => item.trim().length > 0) &&
       Object.values(errors).every(item => !item)
     ) {
+      // console.log(register(form)(authDispatch));
       register(form)(authDispatch);
+
+      navigate(LOGIN, {data});
+
       // (response => {
       //   navigate(LOGIN, {data: response});
       // });

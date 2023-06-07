@@ -27,7 +27,7 @@ export default ({
         last_name,
       })
       .then(res => {
-        console.log('res', res);
+        
         dispatch({type: 'REGISTER_SUCCESS', payload: res.data});
       })
       .catch(err => {

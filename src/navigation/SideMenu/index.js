@@ -34,7 +34,7 @@ const SideMenu = ({navigation, authDispatch}) => {
 
   const menuItems = [
     {
-      icon: <Icon type="fontisto" size={17} name="player-settings" />,
+      icon: <Icon type="material" size={17} name="settings" color="black" />,
       name: 'Settings',
       onPress: () => {
         navigation.navigate(SETTINGS);
@@ -50,7 +50,6 @@ const SideMenu = ({navigation, authDispatch}) => {
     <SafeAreaView>
       <View>
         <Container>
-          <Text style={{color: 'black'}}>alskdjflaksjfakldjfaklfjaklfja</Text>
           <Image
             height={70}
             width={70}

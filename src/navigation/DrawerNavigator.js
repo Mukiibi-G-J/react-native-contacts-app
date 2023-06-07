@@ -19,8 +19,8 @@ const DrawerNavigator = () => {
   return (
     <Drawer.Navigator
       screenOptions={{
-        // drawerType: Dimensions.width >= 768 ? 'permanent' : 'front',
         drawerType: 'slide',
+        headerShown: false,
       }}
       drawerContent={({navigation}) =>
         getDrawerContent(navigation, authDispatch)

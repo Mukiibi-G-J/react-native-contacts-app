@@ -19,6 +19,7 @@ export default function LoginComponent({
 }) {
   const {navigate} = useNavigation();
   const [isSecureEntry, setIsSecureEntry] = React.useState(true);
+
   return (
     <Container>
       <Image
