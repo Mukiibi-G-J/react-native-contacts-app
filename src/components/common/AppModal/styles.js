@@ -2,6 +2,9 @@ import {StyleSheet} from 'react-native';
 import colors from '../../../assets/theme/colors';
 
 export default StyleSheet.create({
+  text: {
+    color: "black",
+  },
   wrapper: {
     backgroundColor: 'rgba(0,0,0,0.6)',
     flex: 1,

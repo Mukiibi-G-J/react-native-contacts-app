@@ -5,10 +5,22 @@ import {color} from 'react-native-reanimated';
 import {useNavigation} from '@react-navigation/native';
 import Icon from '../../components/Icon';
 import ContactsComponent from '../../components/ContactsComponent';
+import {GlobaleContext} from '../../Context/Provider';
+import getContacts from '../../Context/actions/contacts/getContacts';
 
 export default function Contacts() {
   const [modalVisible, setModalVisible] = React.useState(false);
   const {setOptions, toggleDrawer} = useNavigation();
+  const {
+    contactsDispatch,
+    contactsState: {
+      getContacts: {data, loading},
+    },
+  } = React.useContext(GlobaleContext);
+  React.useEffect(() => {
+    getContacts()(contactsDispatch);
+    console.log(data, loading);
+  }, []);
   React.useEffect(() => {
     setOptions({
       headerLeft: () => (
@@ -27,10 +39,13 @@ export default function Contacts() {
       ),
     });
   }, []);
+
   return (
     <ContactsComponent
       modalVisible={modalVisible}
       setModalVisible={setModalVisible}
+      loading={loading}
+      data={data}
     />
   );
 }

@@ -17,9 +17,9 @@ const AppModal = ({
     <Modal visible={modalVisible} transparent>
       <TouchableOpacity
         onPress={() => {
-          if (closeOnTouchOutside) {
-            setModalVisible(false);
-          }
+          // if (closeOnTouchOutside) {
+          setModalVisible(false);
+          // }
         }}
         style={styles.wrapper}>
         <View style={styles.modalView}>
@@ -29,9 +29,11 @@ const AppModal = ({
                 onPress={() => {
                   setModalVisible(false);
                 }}>
-                <Icon size={27} type="evil" name="close" />
+                <Icon size={27} type="evil" name="close" color="black" />
               </TouchableOpacity>
-              <Text style={styles.title}>{title || 'RNContacts'}</Text>
+              <Text style={[styles.title, styles.text]}>
+                {title || 'RNContacts'}
+              </Text>
 
               <View />
               <View />
@@ -50,9 +52,13 @@ const AppModal = ({
                   <View style={styles.footerSeparator} />
                   <View style={styles.footerItems}>
                     <View style={styles.footer}>
-                      <Text style={styles.footerText}>Privacy Policy</Text>
+                      <Text style={[styles.footerText, styles.text]}>
+                        Privacy Policy
+                      </Text>
                       <View style={styles.termsView} />
-                      <Text style={styles.footerText}>Terms of Service</Text>
+                      <Text style={[styles.footerText, styles.text]}>
+                        Terms of Service
+                      </Text>
                     </View>
                   </View>
                 </>

@@ -11,7 +11,7 @@ import styles from './style';
 import Container from '../../components/common/Container';
 import Icon from '../../components/Icon';
 import {useNavigation} from '@react-navigation/native';
-import {SETTINGS} from '../../constants/RouteNames';
+import {SETTINGS, LOGIN} from '../../constants/RouteNames';
 import logoutUser from '../../Context/actions/auth/logoutUser';
 
 const SideMenu = ({navigation, authDispatch}) => {
@@ -27,6 +27,10 @@ const SideMenu = ({navigation, authDispatch}) => {
         text: 'OK',
         onPress: () => {
           logoutUser()(authDispatch);
+          // navigation.navigate(
+          //   Root',
+          //   { screen: LOGIN}
+          //   );
         },
       },
     ]);
